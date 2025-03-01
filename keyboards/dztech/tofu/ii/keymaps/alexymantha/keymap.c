@@ -41,6 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 layer_state_t layer_state_set_user(layer_state_t state) {
+    rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
     switch (get_highest_layer(state)) {
     case 0: // Default layer
         rgblight_sethsv(180, 255, 255); // Cyan in HSV
