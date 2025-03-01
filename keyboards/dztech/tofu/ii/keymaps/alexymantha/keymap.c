@@ -39,3 +39,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		    KC_LSFT,       KC_TRNS,  KC_TRNS, KC_TRNS,KC_TRNS, KC_TRNS, DF(0), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_MPLY,          KC_VOLU,  KC_MUTE,
 		    KC_TRNS,       KC_TRNS,  KC_TRNS,                  KC_TRNS,                   KC_TRNS, KC_TRNS, KC_TRNS,  KC_MPRV,          KC_VOLD,  KC_MNXT),
 };
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+    case 0: // Default layer
+        rgblight_sethsv(180, 255, 255); // Cyan in HSV
+        break;
+    case 1: // Game layer
+        rgblight_sethsv(0, 255, 255);   // Red in HSV
+        break;
+    case 2: // Special layer
+        rgblight_sethsv(240, 255, 255); // Blue in HSV
+        break;
+    default:
+        rgblight_sethsv(120, 255, 255); // Green in HSV
+        break;
+    }
+    return state;
+}
